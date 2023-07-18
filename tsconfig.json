@@ -1,0 +1,45 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "incremental": true,
+        "isolatedModules": true,
+        "lib": [
+            "DOM",
+            "DOM.Iterable",
+            "ESNext"
+        ],
+        "module": "ESNext",
+        "moduleResolution": "NodeNext",
+        "noEmit": true,
+        "outDir": "build",
+        "paths": {
+            "@/*": [
+                "./*"
+            ]
+        },
+        "plugins": [
+            {
+                "name": "next"
+            },
+            {
+                "name": "typescript-language-server"
+            }
+        ],
+        "resolveJsonModule": true,
+        "rootDir": "src",
+        "skipLibCheck": true,
+        "sourceRoot": "src",
+        "strict": true,
+        "target": "ESNext",
+    },
+    "exclude": [
+        "**/node_modules",
+        "node_modules"
+    ],
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx"
+    ]
+}

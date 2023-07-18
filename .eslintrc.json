@@ -1,0 +1,156 @@
+{
+    "env": {
+        "es2016": true,
+        "es2017": true,
+        "es2018": true,
+        "es2019": true,
+        "es2020": true,
+        "es2021": true,
+        "es2022": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": [],
+    "ignorePatterns": [
+        "**/node_modules/*",
+        "node_modules"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "project": [
+            "./tsconfig.json"
+        ],
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "node"
+    ],
+    "root": true,
+    "rules": {
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-unnecessary-type-assertion": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "array-bracket-spacing": "off",
+        "arrow-body-style": "error",
+        "arrow-parens": "error",
+        "arrow-spacing": "error",
+        "curly": [
+            "error",
+            "multi"
+        ],
+        "dot-notation": "off",
+        "generator-star-spacing": "error",
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "jsx-quotes": [
+            "error",
+            "prefer-double"
+        ],
+        "keyword-spacing": [
+            "error",
+            {
+                "after": false,
+                "before": true,
+                "overrides": {
+                    "case": {
+                        "after": true
+                    },
+                    "const": {
+                        "after": true
+                    },
+                    "default": {
+                        "after": true
+                    },
+                    "else": {
+                        "after": true
+                    },
+                    "from": {
+                        "after": true
+                    },
+                    "import": {
+                        "after": true
+                    },
+                    "return": {
+                        "after": true
+                    },
+                    "try": {
+                        "after": true
+                    }
+                }
+            }
+        ],
+        "lines-around-comment": "off",
+        "max-len": "off",
+        "multiline-ternary": "off",
+        "no-case-declarations": "off",
+        "no-confusing-arrow": "off",
+        "no-duplicate-imports": "error",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2,
+                "maxBOF": 0,
+                "maxEOF": 1
+            }
+        ],
+        "no-undefined": "off",
+        "no-unused-vars": "off",
+        "no-use-before-define": "off",
+        "no-useless-computed-key": "error",
+        "no-useless-constructor": "error",
+        "no-useless-rename": "error",
+        "no-var": "error",
+        "node/no-missing-import": "off",
+        "node/no-unpublished-import": "off",
+        "node/no-unsupported-features/es-syntax": "off",
+        "object-shorthand": "error",
+        "padding-line-between-statements": "off",
+        "prefer-arrow-callback": "error",
+        "prefer-const": "error",
+        "prefer-rest-params": "error",
+        "prefer-spread": "error",
+        "prefer-template": "error",
+        "quotes": [
+            "error",
+            "single",
+            {
+                "allowTemplateLiterals": true,
+                "avoidEscape": true
+            }
+        ],
+        "rest-spread-spacing": "error",
+        "semi": [
+            "error",
+            "always"
+        ],
+        "space-before-function-paren": [
+            "error",
+            {
+                "anonymous": "never",
+                "asyncArrow": "always",
+                "named": "never"
+            }
+        ],
+        "spaced-comment": "off",
+        "strict": "off",
+        "template-curly-spacing": "error",
+        "yield-star-spacing": "error"
+    },
+    "settings": {}
+}
