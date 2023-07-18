@@ -7,7 +7,7 @@
     "bugs": {
         "url": "https://github.com/ms0503/interticle/issues"
     },
-    "description": "A framework for sharing articles with each other.",
+    "description": "A framework for sharing articles between servers.",
     "devDependencies": {
         "@types/eslint": "^8.44.0",
         "@types/node": "^20.4.2",
@@ -36,5 +36,5 @@
         "lint": "eslint"
     },
     "type": "module",
-    "version": "1.0.0"
+    "version": "0.1.0-SNAPSHOT"
 }
