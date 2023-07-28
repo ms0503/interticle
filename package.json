@@ -13,18 +13,25 @@
         "@types/node": "^20.4.2",
         "@typescript-eslint/eslint-plugin": "^6.1.0",
         "@typescript-eslint/parser": "^6.1.0",
+        "docdash": "^2.0.1",
         "eslint": "^8.45.0",
         "eslint-plugin-node": "^11.1.0",
+        "jsdoc": "^4.0.2",
+        "tslib": "^2.6.1",
         "typescript": "^5.1.6",
-        "typescript-language-server": "^3.3.2"
+        "typescript-eslint-language-service": "^5.0.5"
     },
     "engines": {
         "node": ">=18"
     },
     "homepage": "https://ms0503.github.io/interticle",
     "license": "MIT",
-    "main": "build/lib/index.js",
+    "main": "dist/lib/index.js",
     "name": "interticle",
+    "optionalDependencies": {
+        "mysql2": "^3.5.2",
+        "sqlite3": "^5.1.6"
+    },
     "packageManager": "yarn@1.22.19",
     "private": false,
     "repository": {
@@ -33,6 +40,7 @@
     },
     "scripts": {
         "build": "tsc -b",
+        "doc": "jsdoc -c jsdoc.json",
         "lint": "eslint"
     },
     "type": "module",

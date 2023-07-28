@@ -1,8 +1,12 @@
 {
     "compilerOptions": {
         "allowJs": true,
+        "declaration": true,
+        "declarationDir": "dist/types",
+        "declarationMap": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
+        "importHelpers": true,
         "incremental": true,
         "isolatedModules": true,
         "lib": [
@@ -12,8 +16,9 @@
         ],
         "module": "ESNext",
         "moduleResolution": "Node",
+        "newLine": "lf",
         "noEmit": true,
-        "outDir": "build",
+        "outDir": "dist/lib",
         "paths": {
             "@/*": [
                 "./*"
@@ -24,15 +29,15 @@
                 "name": "next"
             },
             {
-                "name": "typescript-language-server"
+                "name": "typescript-eslint-language-service"
             }
         ],
+        "removeComments": true,
         "resolveJsonModule": true,
         "rootDir": "src",
         "skipLibCheck": true,
-        "sourceRoot": "src",
         "strict": true,
-        "target": "ESNext",
+        "target": "ESNext"
     },
     "exclude": [
         "**/node_modules",

@@ -1,0 +1,42 @@
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version: '>=18'
+      - name: setup build env
+        run: yarn install --freeze-lockfile
+      - name: build jsdoc
+        run: yarn doc
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: upload
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs/
+      - name: deploy
+        if: ${{ github.event_name == 'push' }}
+        id: deployment
+        uses: actions/deploy-pages@v2

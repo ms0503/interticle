@@ -10,10 +10,39 @@
         "es6": true,
         "node": true
     },
-    "extends": [],
+    "extends": [
+        "eslint:recommended",
+        "plugin:node/recommended",
+        "plugin:@typescript-eslint/strict-type-checked",
+        "plugin:@typescript-eslint/stylistic-type-checked"
+    ],
     "ignorePatterns": [
         "**/node_modules/*",
         "node_modules"
+    ],
+    "overrides": [
+        {
+            "extends": [
+                "plugin:@typescript-eslint/disable-type-checked"
+            ],
+            "files": [
+                "*.cjs",
+                "*.js",
+                "*.jsx",
+                "*.mjs"
+            ]
+        },
+        {
+            "files": [
+                "*.cts",
+                "*.mts",
+                "*.ts",
+                "*.tsx"
+            ],
+            "rules": {
+                "no-undef": "off"
+            }
+        }
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -21,10 +50,9 @@
             "jsx": true
         },
         "ecmaVersion": "latest",
-        "project": [
-            "./tsconfig.json"
-        ],
-        "sourceType": "module"
+        "project": "./tsconfig.eslint.json",
+        "sourceType": "module",
+        "tsconfigRootDir": "."
     },
     "plugins": [
         "@typescript-eslint",
@@ -78,6 +106,9 @@
                         "after": true
                     },
                     "else": {
+                        "after": true
+                    },
+                    "export": {
                         "after": true
                     },
                     "from": {
