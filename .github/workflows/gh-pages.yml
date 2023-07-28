@@ -1,15 +1,25 @@
+name: GitHub Pages
+
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
   workflow_dispatch:
 
+concurrency:
+  cancel-in-progress: false
+  group: pages
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -22,21 +32,12 @@ jobs:
         run: yarn install --freeze-lockfile
       - name: build jsdoc
         run: yarn doc
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      pages: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
+      - name: setup Pages
+        uses: actions/configure-pages@v3
       - name: upload
         uses: actions/upload-pages-artifact@v2
         with:
           path: docs/
       - name: deploy
-        if: ${{ github.event_name == 'push' }}
         id: deployment
         uses: actions/deploy-pages@v2
