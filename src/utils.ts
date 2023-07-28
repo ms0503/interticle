@@ -11,7 +11,7 @@
 'use strict';
 
 /**
- * Pads input string with pad string.
+ * Returns a string padded with pad string.
  *
  * @since 0.1.0
  *

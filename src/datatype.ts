@@ -19,28 +19,32 @@ import type { Snowflake } from './snowflake';
  */
 export interface Article {
     /**
-     * An Interticle Snowflake ID of article.
+     * An Interticle Snowflake ID of this.
      *
      * @since 0.1.0
      */
     id: Snowflake;
 
     /**
-     * An article title.
+     * A title of this.
      *
      * @since 0.1.0
      */
     title: string;
 
     /**
-     * An Interticle Snowflake ID of author.
+     * An Interticle Snowflake ID of author of this.
      *
      * @since 0.1.0
      */
     author_id: Snowflake;
 
     /**
-     * An original url of article if this is on an external server.
+     * An original url of this.
+     *
+     * Possibly `undefined` if this is not on an external server.
+     *
+     * @since 0.1.0
      */
     origin_url?: string;
 }

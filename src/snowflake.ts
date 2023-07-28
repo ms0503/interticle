@@ -80,60 +80,60 @@ export class Snowflake {
     }
 
     /**
-     * Gives the Snowflake timestamp.
+     * Returns the Snowflake timestamp.
      *
      * @since 0.1.0
      * @access public
      *
-     * @returns number The Snowflake timestamp.
+     * @returns number The timestamp of this.
      */
     public getTimestamp(): number {
         return parseInt(this.id.toString(2).slice(1, 42), 2);
     }
 
     /**
-     * Gives the Snowflake machine ID.
+     * Returns the Snowflake machine ID.
      *
      * @since 0.1.0
      * @access public
      *
-     * @returns number The Snowflake machine ID.
+     * @returns number The machine ID of this.
      */
     public getMachineId(): number {
         return parseInt(this.id.toString(2).slice(42, 52), 2);
     }
 
     /**
-     * Gives the Snowflake datacenter ID.
+     * Returns the Snowflake datacenter ID.
      *
      * @since 0.1.0
      * @access public
      *
-     * @returns number The Snowflake datacenter ID.
+     * @returns number The datacenter ID of this.
      */
     public getDatacenterId(): number {
         return parseInt(this.id.toString(2).slice(42, 47), 2);
     }
 
     /**
-     * Gives the Snowflake worker ID.
+     * Returns the Snowflake worker ID.
      *
      * @since 0.1.0
      * @access public
      *
-     * @returns number The Snowflake worker ID.
+     * @returns number The worker ID of this.
      */
     public getWorkerId(): number {
         return parseInt(this.id.toString(2).slice(47, 52), 2);
     }
 
     /**
-     * Gives the Snowflake sequence ID.
+     * Returns the Snowflake sequence ID.
      *
      * @since 0.1.0
      * @access public
      *
-     * @returns number The Snowflake sequence ID.
+     * @returns number The sequence ID of this.
      */
     public getSequenceId(): number {
         return parseInt(this.id.toString(2).slice(52), 2);
