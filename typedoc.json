@@ -1,0 +1,16 @@
+{
+    "entryPoints": [
+        "src"
+    ],
+    "entryPointStrategy": "resolve",
+    "githubPages": true,
+    "name": "Interticle",
+    "out": "docs/apidoc",
+    "plugin": [
+        "typedoc-plugin-markdown",
+        "typedoc-theme-hierarchy"
+    ],
+    "theme": "hierarchy",
+    "titleLink": "https://ms0503.github.io/interticle",
+    "tsconfig": "tsconfig.json"
+}
