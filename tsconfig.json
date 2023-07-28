@@ -11,7 +11,7 @@
             "ESNext"
         ],
         "module": "ESNext",
-        "moduleResolution": "NodeNext",
+        "moduleResolution": "Node",
         "noEmit": true,
         "outDir": "build",
         "paths": {
