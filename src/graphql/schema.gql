@@ -1,0 +1,47 @@
+schema {
+    query: Query
+}
+
+type Query {
+    articles: [Article!]!
+    authors: [Author!]!
+}
+
+type Article {
+    id: String!
+    title: String!
+    author_id: String!
+    origin_url: String
+}
+
+type Author {
+    id: String!
+    name: String!
+    description: String
+    socials: Socials
+}
+
+type Socials {
+    coffee: String
+    facebook: String
+    git: String
+    homepage: String
+    qiita: String
+    twitter: String
+    zenn: String
+}
+
+query ALL_ARTICLES {
+    articles {
+        id
+        title
+        origin_url
+    }
+}
+
+query ALL_AUTHORS {
+    authors {
+        id
+        name
+    }
+}
