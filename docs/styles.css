@@ -75,7 +75,7 @@ a {
                 height: 100%;
                 list-style: none;
                 @media (768px <= width) {
-                    grid-template: 1fr / repeat(auto-fill, 50vw);
+                    grid-template: 1fr / repeat(auto-fill, 33.33vw);
                 }
 
                 > li {
@@ -88,6 +88,15 @@ a {
 
                     &.active, &:active, &:focus, &:hover {
                         background-color: var(--navigation-hover-bg-color);
+                    }
+
+                    > a {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    & p {
+                        padding: 10px;
                     }
                 }
             }

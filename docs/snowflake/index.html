@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head prefix="og: https://ogp.me/ns#">
+        <meta charset="UTF-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap">
+        <link rel="stylesheet" href="../styles.css" />
+        <title>Interticle</title>
+    </head>
+    <body>
+        <div id="root">
+            <header>
+                <span class="project-name">Interticle</span>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href=".."><p>Top</p></a>
+                        </li>
+                        <li>
+                            <a href="../apidoc"><p>TS API Docs</p></a>
+                        </li>
+                        <li class="active">
+                            <p>Snowflake</p>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <main>
+                <h1>Interticle Snowflake</h1>
+                <p>Interticle Snowflake is a modified Twitter Snowflake.</p>
+                <h2>Data Structure</h2>
+                <table>
+                    <tr>
+                        <th>bit 0</th>
+                        <th>bit 1-41</th>
+                        <th>bit 42-51</th>
+                        <th>bit 52-63</th>
+                    </tr>
+                    <tr>
+                        <td>unused(must be zero)</td>
+                        <td>timestamp(epoch is 2023-01-01T00:00:00.000Z)</td>
+                        <td><del>machine id</del><ins>internal server id</ins></td>
+                        <td>sequence</td>
+                    </tr>
+                </table>
+            </main>
+            <footer>
+                <small class="copyright">
+                    Copyright &copy; 2023 Sora Tonami
+                </small>
+            </footer>
+        </div>
+    </body>
+</html>
