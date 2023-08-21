@@ -10,8 +10,6 @@
 
 'use strict';
 
-import { padding } from '.';
-
 /**
  * Interticle Snowflake Epoch
  *
@@ -92,62 +90,38 @@ export class Snowflake {
     }
 
     /**
-     * Returns the Snowflake machine ID.
+     * Returns the Snowflake internal server id.
      *
      * @since 0.1.0
      * @access public
      *
-     * @returns number The machine ID of this.
+     * @returns number The internal server id of this.
      */
-    public getMachineId(): number {
+    public getInternalServerId(): number {
         return parseInt(this.id.toString(2).slice(42, 52), 2);
     }
 
     /**
-     * Returns the Snowflake datacenter ID.
+     * Returns the Snowflake sequence.
      *
      * @since 0.1.0
      * @access public
      *
-     * @returns number The datacenter ID of this.
-     */
-    public getDatacenterId(): number {
-        return parseInt(this.id.toString(2).slice(42, 47), 2);
-    }
-
-    /**
-     * Returns the Snowflake worker ID.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @returns number The worker ID of this.
-     */
-    public getWorkerId(): number {
-        return parseInt(this.id.toString(2).slice(47, 52), 2);
-    }
-
-    /**
-     * Returns the Snowflake sequence ID.
-     *
-     * @since 0.1.0
-     * @access public
-     *
-     * @returns number The sequence ID of this.
+     * @returns number The sequence of this.
      */
     public getSequenceId(): number {
         return parseInt(this.id.toString(2).slice(52), 2);
     }
 
     /**
-     * Returns a string representing the specified {@link `BigInt`} value. The trailing "n" is not part of the string.
+     * Returns a string representing the specified `BigInt` value. The trailing "n" is not part of the string.
      *
      * @since 0.1.0
      * @access public
      *
      * @param radix An integer in the range 2 through 36 specifying the base to use for representing the BigInt value. Defaults to 10.
      *
-     * @returns string A string representing the specified {@link `BigInt`} value.
+     * @returns string A string representing the specified `BigInt` value.
      * @throws RangeError Thrown if `radix` is less than 2 or greater than 36.
      */
     public toString(radix?: number): string {
@@ -170,7 +144,7 @@ export class SnowflakeGenerator {
     private lastTimestamp: number;
 
     /**
-     * A sequence ID.
+     * A sequence.
      *
      * @since 0.1.0
      * @access private
@@ -191,18 +165,18 @@ export class SnowflakeGenerator {
     }
 
     /**
-     * Generates a next Interticle Snowflake ID.
+     * Generates a next Interticle Snowflake id.
      *
      * @since 0.1.0
      * @access public
      *
-     * @returns Snowflake A generated Interticle Snowflake ID.
+     * @returns Snowflake A generated Interticle Snowflake id.
      * @throws Error Thrown when clock moved backwards.
      */
     public nextId(): Snowflake {
         let timestamp: number = Date.now();
         if(this.lastTimestamp == timestamp) {
-            this.sequence = parseInt((Array(12).join('0') + (this.sequence + 1).toString(2)).slice(-12), 2);
+            this.sequence = this.sequence + 1 & 0b111111111111;
             if(this.sequence == 0) timestamp = this.tilNextMillis(this.lastTimestamp);
         } else this.sequence = 0;
         if(timestamp < this.lastTimestamp) {
@@ -210,7 +184,7 @@ export class SnowflakeGenerator {
             throw new Error(`Clock moved backwards.  Refusing to generate id for ${this.lastTimestamp - timestamp} milliseconds`);
         }
         this.lastTimestamp = timestamp;
-        return this.generateSnowflakeFromElements(timestamp - SNOWFLAKE_EPOCH, 0, 0, this.sequence);
+        return this.generateSnowflakeFromElements(timestamp - SNOWFLAKE_EPOCH, 0, this.sequence);
     }
 
     /**
@@ -230,23 +204,21 @@ export class SnowflakeGenerator {
     }
 
     /**
-     * Generates Interticle Snowflake from ID elements.
+     * Generates Interticle Snowflake from id elements.
      *
      * @since 0.1.0
      * @access private
      *
-     * @param timestamp    A timestamp for generating.
-     * @param datacenterId A datacenter ID for generating.
-     * @param workerId     A worker ID for generating.
-     * @param sequence     A sequence ID for generating.
+     * @param timestamp        A timestamp for generating.
+     * @param internalServerId A internal server id for generating.
+     * @param sequence         A sequence for generating.
      *
      * @returns Snowflake A generated Interticle Snowflake.
      */
-    private generateSnowflakeFromElements(timestamp: number, datacenterId: number, workerId: number, sequence: number): Snowflake {
-        const t: string = padding(timestamp, 41);
-        const d: string = padding(datacenterId, 5);
-        const w: string = padding(workerId, 5);
-        const s: string = padding(sequence, 12);
-        return new Snowflake(t + d + w + s, 2);
+    private generateSnowflakeFromElements(timestamp: number, internalServerId: number, sequence: number): Snowflake {
+        const t: string = timestamp.toString(2).padStart(41, '0');
+        const i: string = internalServerId.toString(2).padStart(10, '0');
+        const s: string = sequence.toString(2).padStart(12, '0');
+        return new Snowflake(t + i + s, 2);
     }
 }

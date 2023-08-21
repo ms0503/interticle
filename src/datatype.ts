@@ -12,6 +12,8 @@
 
 import type { Snowflake } from './snowflake';
 
+export type Social = 'coffee' | 'facebook' | 'git' | 'homepage' | 'qiita' | 'twitter' | 'zenn';
+
 /**
  * An article data.
  *
@@ -19,7 +21,7 @@ import type { Snowflake } from './snowflake';
  */
 export interface Article {
     /**
-     * An Interticle Snowflake ID of this.
+     * An Interticle Snowflake id of this.
      *
      * @since 0.1.0
      */
@@ -33,7 +35,7 @@ export interface Article {
     title: string;
 
     /**
-     * An Interticle Snowflake ID of author of this.
+     * An Interticle Snowflake id of author of this.
      *
      * @since 0.1.0
      */
@@ -47,4 +49,48 @@ export interface Article {
      * @since 0.1.0
      */
     origin_url?: string;
+}
+
+/**
+ * An author data.
+ *
+ * @since 0.1.0
+ */
+export interface Author {
+    /**
+     * An Interticle Snowflake id of this.
+     *
+     * @since 0.1.0
+     */
+    id: Snowflake;
+
+    /**
+     * A display name of this.
+     *
+     * @since 0.1.0
+     */
+    name: string;
+
+    /**
+     * A description of this.
+     *
+     * Possibly `undefined` if this author do not set description.
+     *
+     * @since 0.1.0
+     */
+    description?: string;
+
+    /**
+     * Some social links
+     *
+     * @since 0.1.0
+     */
+    socials: Partial<{
+        [service in Social]: URL | string
+    }>;
+}
+
+export interface Server {
+    id: number;
+    url: URL | string;
 }
